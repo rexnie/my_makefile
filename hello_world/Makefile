@@ -2,7 +2,7 @@ objects = main.o print1.o print2.o
 CC = gcc
 
 main.bin : $(objects)
-	$(CC) -o main.bin $(objects)
+	$(CC) -o $@ $^
 
 main.o : print1.h print2.h
 
