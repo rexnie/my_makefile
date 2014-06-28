@@ -11,5 +11,6 @@ print1.o : print1.c print1.h
 print2.o : print2.c print2.h
 	gcc -o print2.o -c print2.c
 
+.PHONY : clean
 clean :
-	rm -r main.bin $(objects)
+	-rm -r main.bin $(objects)
