@@ -3,6 +3,7 @@ CC = gcc
 
 main.bin : $(objects)
 	@$(CC) -o $@ $^
+	@echo $(MAKELEVEL)
 
 main.o : print1.h print2.h
 

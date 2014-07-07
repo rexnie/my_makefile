@@ -1,0 +1,29 @@
+ifeq (0,${MAKELEVEL})
+cur-dir := $(shell pwd)
+whoami := $(shell whoami)
+host-type := $(shell arch)
+MAKE := ${MAKE} host-type=${host-type} whoami=${whoami}
+endif
+
+sources := foo.c bar.c baz.s ugh.h
+names := a b c d e f
+
+ifndef MAKE
+$(error not define MAKE)
+endif 
+
+all:
+	@echo $(cur-dir)
+	@echo $(MAKE)
+	@echo "subst=" $(subst ee,EE,feet on the street)
+	@echo "patsubst=" $(patsubst %.c,%.o,x.c.c b.c d.c e.o)
+	@echo "findstring=" $(findstring ab,a b c abcd)
+	@echo "filter=" $(filter %.c %s,$(sources))
+	@echo "filter-out=" $(filter-out %.c %s,$(sources))
+	@echo "word=" $(word 2,$(sources))
+	@echo "wordlist=" $(wordlist 2,4,$(sources))
+	@echo "words=" $(words $(sources))
+	@echo "foreach=" $(foreach n,$(names),$(n).o)
+	@echo "origin=" $(origin names)
+	@echo "shell=" $(shell ls)
+
